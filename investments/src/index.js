@@ -5,6 +5,7 @@ const investments = require("./data")
 const R = require("ramda")
 
 const app = express()
+app.use(express.text())
 
 app.use(bodyParser.json({limit: "10mb"}))
 
