@@ -37,15 +37,8 @@ We're interested in how you break down the work and build your solution in a cle
 - How to run any additional scripts or tests you may have added
 - Relating to the task please add answers to the following questions;
     1. How might you make this service more secure?
-  
-       *I might add an authentication api in one service to have one entrypoint. The given jwt will be valited in the other services through a middleware validator like passport jwt*
     2. How would you make this solution scale to millions of records?
-  
-        *I think using Aws Ecs with Load balancer to have an autoscaling system on the service that need*
     3. What else would you have liked to improve given more time?
-  
-       *I would add handling config with convict/dotenv, bcrypt on login/register, error handling with middleware, authentication with passport jwt, swagger documentation, add database with ORM like typeorm, docker/docker-compose with a container database, integration test*
-  
 
 On completion email a link to your repository to your contact at Moneyhub and ensure it is publicly accessible.
 
@@ -82,3 +75,18 @@ Financial Companies - localhost:8082
 Admin - localhost:8083
 - `/investments/:id` get an investment record by id
 - `/investments/export/csv` get csv formatted text (trigger post to Investments service /export)
+
+To run unit test:
+```bash
+npm run test
+```
+
+1. How might you make this service more secure?
+
+    *I might add an authentication api in one service to have one entrypoint. The given jwt will be valited in the other services through a middleware validator like passport jwt*
+3. How would you make this solution scale to millions of records?
+
+   *I think using Aws Ecs with Load balancer to have an autoscaling system on the service that needs to*
+4. What else would you have liked to improve given more time?
+
+   *I would add handling config with convict/dotenv, bcrypt on login/register, error handling with middleware, authentication with passport jwt, swagger documentation, add database with ORM like typeorm, docker/docker-compose with a container database, integration test*
