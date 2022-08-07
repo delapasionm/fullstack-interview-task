@@ -18,8 +18,8 @@ app.get("/investments/:id", async (req, res) => {
   res.send(data)
 })
 
-app.get("/investments/export/csv", async (req, res) => {
-
+async function exportCsv(req, res) {
+  await fetch(`${config.investmentsServiceUrl}/investments`)
   // requests can be refactor with promise.all to be async
   const investments = await (await fetch(`${config.investmentsServiceUrl}/investments`)).json()
   const companies = await (await fetch(`${config.companiesServiceUrl}/companies`)).json()
@@ -28,7 +28,8 @@ app.get("/investments/export/csv", async (req, res) => {
   await fetch(`${config.investmentsServiceUrl}/investments/export`, {method: "POST", body: csvFormatted})
 
   res.send(csvFormatted)
-})
+}
+app.get("/investments/export/csv", exportCsv)
 
 app.listen(config.port, (err) => {
   if (err) {
@@ -37,3 +38,7 @@ app.listen(config.port, (err) => {
   }
   console.log(`Server running on port ${config.port}`)
 })
+
+module.exports = {
+  exportCsv
+}
